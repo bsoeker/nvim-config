@@ -12,6 +12,7 @@ return {
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
 	{ 'saadparwaiz1/cmp_luasnip' },
-	{ 'rafamadriz/friendly-snippets' }
+	{ 'rafamadriz/friendly-snippets' },
+	{ 'onsails/lspkind.nvim' }
 
 }
