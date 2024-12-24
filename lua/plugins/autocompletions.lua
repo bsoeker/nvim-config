@@ -13,6 +13,5 @@ return {
 	},
 	{ 'saadparwaiz1/cmp_luasnip' },
 	{ 'rafamadriz/friendly-snippets' },
-	{ 'onsails/lspkind.nvim' }
 
 }
