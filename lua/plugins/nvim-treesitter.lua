@@ -27,6 +27,24 @@ return {
 					scope_incremental = "grc", -- Expand to the current scope
 				},
 			},
+			refactor = {
+				highlight_definitions = {
+					enable = true, -- Highlights the definition under the cursor
+				},
+				highlight_current_scope = {
+					enable = false, -- Optionally highlight the current scope
+				},
+				navigation = {
+					enable = true,       -- Enables navigation between references
+					keymaps = {
+						goto_definition = "gnd", -- Jump to definition
+						list_definitions = "gnD", -- List definitions
+						list_definitions_toc = "gO", -- List definitions in a TOC
+						goto_next_usage = "<leader>j", -- Jump to the next usage
+						goto_previous_usage = "<leader>k", -- Jump to the previous usage
+					},
+				},
+			},
 		})
 	end
 }
