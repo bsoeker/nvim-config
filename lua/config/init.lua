@@ -14,6 +14,10 @@ vim.opt.shiftwidth = 4
 vim.wo.number = true
 vim.o.relativenumber = true
 
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 vim.g.clipboard = {
 	name = "xclip",
 	copy = {

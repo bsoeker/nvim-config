@@ -1,12 +1,27 @@
+-- NvimTree
 vim.keymap.set('n', '<leader>ee', ':NvimTreeToggle<CR>', { silent = true })
 vim.keymap.set('n', '<leader>ef', ':NvimTreeFocus<CR>', { silent = true })
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- Moving lines
+vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-j>", ":m .+1<CR>==", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-k>", ":m .-2<CR>==", { noremap = true, silent = true })
+
+-- Duplicate the current line
+vim.api.nvim_set_keymap("n", "<leader>d", ":t.<CR>", { noremap = true, silent = true })
+
+-- Yank to clipboard
 vim.keymap.set('n', '<leader>y', '\"+y')
 vim.keymap.set('v', '<leader>y', '\"+y')
 vim.keymap.set('n', '<leader>Y', '\"+Y')
+
+-- Write & quit
 vim.keymap.set('n', '<leader>w', ":w<CR>")
 vim.keymap.set('n', '<leader>q', ":q<CR>")
+
+-- Git
+vim.keymap.set('n', '<leader>git', vim.cmd.Git)
 
 -- Colorschemes
 vim.keymap.set('n', '<leader>cd', ':colorscheme dracula<CR>', { noremap = true, silent = true })
@@ -26,13 +41,14 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 -- Undotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
--- LSP
+-- LSP & Lspsaga
 local opts = { noremap = true, silent = true, buffer = bufnr }
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+vim.keymap.set("n", "<leader>ca", ':Lspsaga code_action<CR>', opts)
+vim.keymap.set("n", "<leader>t", ':Lspsaga term_toggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>fr', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
 	{ noremap = true, silent = true })
 
