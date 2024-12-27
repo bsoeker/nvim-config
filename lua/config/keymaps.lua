@@ -1,4 +1,5 @@
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>ee', ':NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>ef', ':NvimTreeFocus<CR>', { silent = true })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('n', '<leader>y', '\"+y')
@@ -9,7 +10,7 @@ vim.keymap.set('n', '<leader>q', ":q<CR>")
 
 -- Colorschemes
 vim.keymap.set('n', '<leader>cd', ':colorscheme dracula<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', ':colorscheme poimandres<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ci', ':colorscheme iceberg<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cr', ':colorscheme rose-pine<CR>', { noremap = true, silent = true })
