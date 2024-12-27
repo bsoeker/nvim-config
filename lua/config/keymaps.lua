@@ -29,7 +29,9 @@ vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight-night<CR>', { noremap
 vim.keymap.set('n', '<leader>cp', ':colorscheme poimandres<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ci', ':colorscheme iceberg<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cr', ':colorscheme rose-pine<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cc', ':colorscheme cyberdream<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ccy', ':colorscheme cyberdream<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cca', ':colorscheme carbonfox<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cf', ':colorscheme fluoromachine<CR>', { noremap = true, silent = true })
 
 -- Telescope
 local builtin = require('telescope.builtin')
