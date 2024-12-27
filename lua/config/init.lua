@@ -41,22 +41,25 @@ vim.cmd([[
 
 vim.lsp.inlay_hint.enable(true)
 
--- document highlighting
-vim.api.nvim_create_autocmd('LspAttach', {
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client.server_capabilities.documentHighlightProvider then
-			vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-				buffer = args.buf, -- Attach to the current buffer
-				callback = vim.lsp.buf.document_highlight,
-			})
-			vim.api.nvim_create_autocmd('CursorMoved', {
-				buffer = args.buf, -- Attach to the current buffer
-				callback = vim.lsp.buf.clear_references,
-			})
-		end
-	end,
-})
-
 -- reduce cursore update time so the reference highlight works quicker
 vim.opt.updatetime = 200
+
+-- document highlighting
+-- This code is unnecessary with the nvim-treesitter-refactor plugin
+--
+--
+-- vim.api.nvim_create_autocmd('LspAttach', {
+-- 	callback = function(args)
+-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+-- 		if client.server_capabilities.documentHighlightProvider then
+-- 			vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+-- 				buffer = args.buf, -- Attach to the current buffer
+-- 				callback = vim.lsp.buf.document_highlight,
+-- 			})
+-- 			vim.api.nvim_create_autocmd('CursorMoved', {
+-- 				buffer = args.buf, -- Attach to the current buffer
+-- 				callback = vim.lsp.buf.clear_references,
+-- 			})
+-- 		end
+-- 	end,
+-- })
