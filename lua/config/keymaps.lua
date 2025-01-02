@@ -7,9 +7,11 @@ vim.keymap.set('v', '<C-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true
 vim.keymap.set('v', '<C-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", ":m .+1<CR>==", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", ":m .-2<CR>==", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-j>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true })
 
 -- Duplicate the current line
-vim.api.nvim_set_keymap("n", "<leader>d", ":t.<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>d", ":t.<CR>", { noremap = true, silent = true })
 
 -- Yank to clipboard
 vim.keymap.set('n', '<leader>y', '\"+y')
@@ -52,28 +54,53 @@ vim.keymap.set("n", "<leader>rn", ':Lspsaga rename<CR>', opts)
 vim.keymap.set("n", "<leader>ca", ':Lspsaga code_action<CR>', opts)
 vim.keymap.set("n", "<leader>t", ':Lspsaga term_toggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>fr', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
-	{ noremap = true, silent = true })
+    { noremap = true, silent = true })
 
 -- Rename selection document-wide
+-- Rename selection document-wide
 vim.keymap.set("v", "<leader>rn", function()
-	-- Yank the visually selected text into the unnamed register
-	vim.cmd('normal! "vy')
+    -- Yank the visually selected text into the unnamed register
+    vim.cmd('normal! "vy')
 
-	-- Get the yanked text (exact visual selection)
-	local selected_text = vim.fn.getreg('"')
+    -- Get the yanked text (exact visual selection)
+    local selected_text = vim.fn.getreg('"')
 
-	-- Prompt for the replacement text
-	local new_text = vim.fn.input("Rename '" .. selected_text .. "' to: ")
+    -- Prompt for the replacement text
+    local new_text = vim.fn.input("Rename '" .. selected_text .. "' to: ")
 
-	-- Perform a document-wide substitution
-	if new_text and #new_text > 0 then
-		vim.cmd(":%s/\\V" .. vim.fn.escape(selected_text, "\\/") .. "/" .. vim.fn.escape(new_text, "\\/") .. "/g")
-		vim.cmd("nohlsearch") -- Clear search highlights after substitution
-	else
-		print("Rename canceled or empty replacement provided.")
-	end
+    -- Perform a document-wide substitution
+    if new_text and #new_text > 0 then
+        vim.cmd(":%s/\\V" .. vim.fn.escape(selected_text, "\\/") .. "/" .. vim.fn.escape(new_text, "\\/") .. "/g")
+        vim.cmd("nohlsearch") -- Clear search highlights after substitution
+    else
+        print("Rename canceled or empty replacement provided.")
+    end
+end, { noremap = true, silent = true })
+
+vim.keymap.set("v", "<leader>rn", function()
+    -- Yank the visually selected text into the unnamed register
+    vim.cmd('normal! "vy')
+
+    -- Get the yanked text (exact visual selection)
+    local selected_text = vim.fn.getreg('"')
+
+    -- Prompt for the replacement text
+    local new_text = vim.fn.input("Rename '" .. selected_text .. "' to: ")
+
+    -- Perform a document-wide substitution
+    if new_text and #new_text > 0 then
+        -- Escape special characters for literal matching
+        local escaped_selected = vim.fn.escape(selected_text, "\\/.*$^[]~")
+        local escaped_new = vim.fn.escape(new_text, "\\/")
+
+        -- Perform substitution: `\V` for literal match
+        vim.cmd(":%s/\\V" .. escaped_selected .. "/" .. escaped_new .. "/g")
+        vim.cmd("nohlsearch") -- Clear search highlights after substitution
+    else
+        print("Rename canceled or empty replacement provided.")
+    end
 end, { noremap = true, silent = true })
 
 -- Inlay hint toggle
 vim.keymap.set('n', '<leader>ih', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>',
-	{ noremap = true, silent = true })
+    { noremap = true, silent = true })

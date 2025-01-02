@@ -10,6 +10,10 @@ vim.cmd.colorscheme("tokyonight-night")
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+
+vim.opt.scrolloff = 4
 
 vim.wo.number = true
 vim.o.relativenumber = true
