@@ -56,7 +56,11 @@ vim.keymap.set("n", "<leader>t", ':Lspsaga term_toggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>fr', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
     { noremap = true, silent = true })
 
--- Rename selection document-wide
+
+
+
+
+
 -- Rename selection document-wide
 vim.keymap.set("v", "<leader>rn", function()
     -- Yank the visually selected text into the unnamed register
@@ -65,41 +69,42 @@ vim.keymap.set("v", "<leader>rn", function()
     -- Get the yanked text (exact visual selection)
     local selected_text = vim.fn.getreg('"')
 
-    -- Prompt for the replacement text
+    -- Print the selected text for debugging
+    print("Selected text: " .. selected_text)
+
+    -- Prompt the user for the replacement text
     local new_text = vim.fn.input("Rename '" .. selected_text .. "' to: ")
 
-    -- Perform a document-wide substitution
+    -- Perform the substitution only if a valid replacement is provided
     if new_text and #new_text > 0 then
-        vim.cmd(":%s/\\V" .. vim.fn.escape(selected_text, "\\/") .. "/" .. vim.fn.escape(new_text, "\\/") .. "/g")
-        vim.cmd("nohlsearch") -- Clear search highlights after substitution
-    else
-        print("Rename canceled or empty replacement provided.")
-    end
-end, { noremap = true, silent = true })
-
-vim.keymap.set("v", "<leader>rn", function()
-    -- Yank the visually selected text into the unnamed register
-    vim.cmd('normal! "vy')
-
-    -- Get the yanked text (exact visual selection)
-    local selected_text = vim.fn.getreg('"')
-
-    -- Prompt for the replacement text
-    local new_text = vim.fn.input("Rename '" .. selected_text .. "' to: ")
-
-    -- Perform a document-wide substitution
-    if new_text and #new_text > 0 then
-        -- Escape special characters for literal matching
+        -- Escape special characters in the selected text for literal matching
         local escaped_selected = vim.fn.escape(selected_text, "\\/.*$^[]~")
-        local escaped_new = vim.fn.escape(new_text, "\\/")
 
-        -- Perform substitution: `\V` for literal match
-        vim.cmd(":%s/\\V" .. escaped_selected .. "/" .. escaped_new .. "/g")
-        vim.cmd("nohlsearch") -- Clear search highlights after substitution
+        -- Print debugging information
+        print("Escaped selected text: " .. escaped_selected)
+        print("Replacement text: " .. new_text)
+
+        -- Perform the substitution
+        local success, err = pcall(function()
+            -- Use `\V` for literal match and global substitution
+            vim.cmd(":%s/\\V" .. escaped_selected .. "/" .. new_text .. "/g")
+        end)
+
+        -- Handle errors or report success
+        if not success then
+            print("Error during substitution: " .. err)
+        else
+            vim.cmd("nohlsearch") -- Clear search highlights after substitution
+            vim.cmd("write")      -- Save the file to persist changes
+            print("Substitution successful!")
+        end
     else
         print("Rename canceled or empty replacement provided.")
     end
 end, { noremap = true, silent = true })
+
+-- Remove persisting search highlights
+vim.keymap.set("n", "<leader><Esc>", ":nohlsearch<CR>", { noremap = true, silent = true })
 
 -- Inlay hint toggle
 vim.keymap.set('n', '<leader>ih', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>',
