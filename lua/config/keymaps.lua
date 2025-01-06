@@ -10,6 +10,12 @@ vim.keymap.set("n", "<C-k>", ":m .-2<CR>==", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-j>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true })
 
+-- Remap for moving in insert mode
+vim.api.nvim_set_keymap('i', '<A-h>', '<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<A-l>', '<Right>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<A-j>', '<Down>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<A-k>', '<Up>', { noremap = true, silent = true })
+
 -- Duplicate the current line
 vim.keymap.set("n", "<leader>d", ":t.<CR>", { noremap = true, silent = true })
 
@@ -34,6 +40,8 @@ vim.keymap.set('n', '<leader>cr', ':colorscheme rose-pine<CR>', { noremap = true
 vim.keymap.set('n', '<leader>ccy', ':colorscheme cyberdream<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cca', ':colorscheme carbonfox<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cf', ':colorscheme fluoromachine<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cm', ':colorscheme molokai<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cn', ':colorscheme nord<CR>', { noremap = true, silent = true })
 
 -- Telescope
 local builtin = require('telescope.builtin')
