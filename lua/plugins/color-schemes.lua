@@ -17,9 +17,14 @@ return {
 
     },
     {
-        "EdenEast/nightfox.nvim",
+        "navarasu/onedark.nvim",
         lazy = false,
         priority = 1000,
+        config = function()
+            require('onedark').setup {
+                style = 'deep'
+            }
+        end
     },
     {
         "olivercederborg/poimandres.nvim",
@@ -52,5 +57,5 @@ return {
         "Mofiqul/dracula.nvim",
         lazy = false,
         priority = 1000,
-    }
+    },
 }

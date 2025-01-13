@@ -11,10 +11,10 @@ vim.keymap.set("i", "<C-j>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = t
 vim.keymap.set("i", "<C-k>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true })
 
 -- Remap for moving in insert mode
-vim.api.nvim_set_keymap('i', '<A-h>', '<Left>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<A-l>', '<Right>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<A-j>', '<Down>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<A-k>', '<Up>', { noremap = true, silent = true })
+vim.keymap.set('i', '<A-h>', '<Left>', { noremap = true, silent = true })
+vim.keymap.set('i', '<A-l>', '<Right>', { noremap = true, silent = true })
+vim.keymap.set('i', '<A-j>', '<Down>', { noremap = true, silent = true })
+vim.keymap.set('i', '<A-k>', '<Up>', { noremap = true, silent = true })
 
 -- Duplicate the current line
 vim.keymap.set("n", "<leader>d", ":t.<CR>", { noremap = true, silent = true })
@@ -29,16 +29,16 @@ vim.keymap.set('n', '<leader>w', ":w<CR>")
 vim.keymap.set('n', '<leader>q', ":q<CR>")
 
 -- Git
-vim.keymap.set('n', '<leader>git', vim.cmd.Git)
+vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
 
 -- Colorschemes
 vim.keymap.set('n', '<leader>cd', ':colorscheme dracula<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', ':colorscheme poimandres<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ci', ':colorscheme iceberg<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cr', ':colorscheme rose-pine<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ccy', ':colorscheme cyberdream<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cca', ':colorscheme carbonfox<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>co', ':colorscheme onedark<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cy', ':colorscheme cyberdream<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cf', ':colorscheme fluoromachine<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cm', ':colorscheme molokai<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cn', ':colorscheme nord<CR>', { noremap = true, silent = true })
@@ -61,7 +61,7 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 vim.keymap.set("n", "<leader>rn", ':Lspsaga rename<CR>', opts)
 vim.keymap.set("n", "<leader>ca", ':Lspsaga code_action<CR>', opts)
 vim.keymap.set("n", "<leader>t", ':Lspsaga term_toggle<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>fr', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
+vim.keymap.set('n', '<leader>fr', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
     { noremap = true, silent = true })
 
 
