@@ -33,6 +33,13 @@ local config = {
             },
         },
     },
+    init_options = {
+        bundles = {
+            vim.fn.glob(
+            "/home/pixelvoid/Software/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
+                1)
+        }
+    }
 }
 
 require("jdtls").start_or_attach(config)

@@ -117,3 +117,16 @@ vim.keymap.set("n", "<leader><Esc>", ":nohlsearch<CR>", { noremap = true, silent
 -- Inlay hint toggle
 vim.keymap.set('n', '<leader>ih', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>',
     { noremap = true, silent = true })
+
+-- Debugging
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end, { desc = "Start/Continue Debugging" })
+vim.keymap.set('n', '<F10>', function() require('dap').step_over() end, { desc = "Step Over" })
+vim.keymap.set('n', '<F11>', function() require('dap').step_into() end, { desc = "Step Into" })
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end, { desc = "Step Out" })
+vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end, { desc = "Toggle Breakpoint" })
+
+-- Use Alt + hjkl to navigate between panes
+vim.keymap.set('n', '<A-h>', '<C-w>h', { desc = "Move to left pane" })
+vim.keymap.set('n', '<A-j>', '<C-w>j', { desc = "Move to below pane" })
+vim.keymap.set('n', '<A-k>', '<C-w>k', { desc = "Move to above pane" })
+vim.keymap.set('n', '<A-l>', '<C-w>l', { desc = "Move to right pane" })
