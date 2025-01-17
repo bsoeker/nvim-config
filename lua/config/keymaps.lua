@@ -130,3 +130,9 @@ vim.keymap.set('n', '<A-h>', '<C-w>h', { desc = "Move to left pane" })
 vim.keymap.set('n', '<A-j>', '<C-w>j', { desc = "Move to below pane" })
 vim.keymap.set('n', '<A-k>', '<C-w>k', { desc = "Move to above pane" })
 vim.keymap.set('n', '<A-l>', '<C-w>l', { desc = "Move to right pane" })
+
+-- Resize splits with arrow keys
+vim.keymap.set('n', '<A-Up>', ':resize +2<CR>', { desc = "Increase Height" })
+vim.keymap.set('n', '<A-Down>', ':resize -2<CR>', { desc = "Decrease Height" })
+vim.keymap.set('n', '<A-Right>', ':vertical resize +2<CR>', { desc = "Increase Width" })
+vim.keymap.set('n', '<A-Left>', ':vertical resize -2<CR>', { desc = "Decrease Width" })
