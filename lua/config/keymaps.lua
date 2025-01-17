@@ -1,3 +1,6 @@
+-- Note that there are also keymaps located at nvim-treesitter.lua and also
+-- completions.lua
+
 -- NvimTree
 vim.keymap.set('n', '<leader>ee', ':NvimTreeToggle<CR>', { silent = true })
 vim.keymap.set('n', '<leader>ef', ':NvimTreeFocus<CR>', { silent = true })
@@ -33,7 +36,7 @@ vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
 
 -- Colorschemes
 vim.keymap.set('n', '<leader>cd', ':colorscheme dracula<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', ':colorscheme poimandres<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ci', ':colorscheme iceberg<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cr', ':colorscheme rose-pine<CR>', { noremap = true, silent = true })
@@ -63,11 +66,6 @@ vim.keymap.set("n", "<leader>ca", ':Lspsaga code_action<CR>', opts)
 vim.keymap.set("n", "<leader>t", ':Lspsaga term_toggle<CR>', opts)
 vim.keymap.set('n', '<leader>fr', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
     { noremap = true, silent = true })
-
-
-
-
-
 
 -- Rename selection document-wide
 vim.keymap.set("v", "<leader>rn", function()
