@@ -6,11 +6,6 @@ return {
         priority = 1000,
     },
     {
-        "cocopon/iceberg.vim",
-        lazy = false,
-        priority = 1000,
-    },
-    {
         "maxmx03/fluoromachine.nvim",
         lazy = false,
         priority = 1000,
@@ -55,6 +50,11 @@ return {
     },
     {
         "Mofiqul/dracula.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+    {
+        "shaunsingh/moonlight.nvim",
         lazy = false,
         priority = 1000,
     },

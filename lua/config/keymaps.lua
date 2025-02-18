@@ -1,4 +1,4 @@
--- Note that there are also keymaps located at nvim-treesitter.lua and also
+-- Note that there are also keymaps located at nvim-treesitter.lua and
 -- completions.lua
 
 -- NvimTree
@@ -38,12 +38,12 @@ vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
 vim.keymap.set('n', '<leader>cd', ':colorscheme dracula<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', ':colorscheme poimandres<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ci', ':colorscheme iceberg<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cr', ':colorscheme rose-pine<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>co', ':colorscheme onedark<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cy', ':colorscheme cyberdream<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cf', ':colorscheme fluoromachine<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cm', ':colorscheme molokai<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cl', ':colorscheme moonlight<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cn', ':colorscheme nord<CR>', { noremap = true, silent = true })
 
 -- Telescope
@@ -118,6 +118,7 @@ vim.keymap.set('n', '<leader>ih', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.in
 
 -- Debugging
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end, { desc = "Start/Continue Debugging" })
+vim.keymap.set('n', '<F6>', function() require('dap').terminate() end, { desc = "Terminate" })
 vim.keymap.set('n', '<F10>', function() require('dap').step_over() end, { desc = "Step Over" })
 vim.keymap.set('n', '<F11>', function() require('dap').step_into() end, { desc = "Step Into" })
 vim.keymap.set('n', '<F12>', function() require('dap').step_out() end, { desc = "Step Out" })
