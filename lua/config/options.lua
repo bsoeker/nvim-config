@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("moonlight")
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4

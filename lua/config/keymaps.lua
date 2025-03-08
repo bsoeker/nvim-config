@@ -18,6 +18,8 @@ vim.keymap.set('i', '<A-h>', '<Left>', { noremap = true, silent = true })
 vim.keymap.set('i', '<A-l>', '<Right>', { noremap = true, silent = true })
 vim.keymap.set('i', '<A-j>', '<Down>', { noremap = true, silent = true })
 vim.keymap.set('i', '<A-k>', '<Up>', { noremap = true, silent = true })
+vim.keymap.set('i', '<A-e>', '<Esc>ea', { noremap = true, silent = true })
+vim.keymap.set('i', '<A-b>', '<Esc>bi', { noremap = true, silent = true })
 
 -- Duplicate the current line
 vim.keymap.set("n", "<leader>d", ":t.<CR>", { noremap = true, silent = true })
