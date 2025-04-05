@@ -1,7 +1,7 @@
 local treesitterConfig = require('nvim-treesitter.configs')
 treesitterConfig.setup {
     -- List of parsers to be installed
-    ensure_installed = { 'lua', 'cpp', 'c', 'javascript', 'typescript', 'java', 'python', 'html', 'css' },
+    ensure_installed = { 'lua', 'cpp', 'c', 'javascript', 'typescript', 'java', 'python', 'html', 'css', 'verilog', 'rust' },
     sync_install = false,
 
     -- Enable syntax highlighting

@@ -55,12 +55,12 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }),
     }),
-    sources = cmp.config.sources({
+    sources = {
         { name = 'nvim_lsp' },
-        { name = 'luasnip' }
-    }, {
+        { name = 'luasnip' },
+        { name = 'path' },
         { name = 'buffer' },
-    })
+    }
 })
 
 cmp.setup.cmdline(':', {
