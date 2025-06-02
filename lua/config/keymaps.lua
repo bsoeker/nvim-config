@@ -38,11 +38,10 @@ vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
 
 -- Colorschemes
 vim.keymap.set('n', '<leader>cd', ':colorscheme dracula<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', ':colorscheme poimandres<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cr', ':colorscheme rose-pine<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>co', ':colorscheme onedark<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cy', ':colorscheme cyberdream<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cf', ':colorscheme fluoromachine<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cm', ':colorscheme molokai<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cl', ':colorscheme moonlight<CR>', { noremap = true, silent = true })

@@ -33,11 +33,6 @@ return {
         priority = 1000,
     },
     {
-        "scottmckendry/cyberdream.nvim",
-        lazy = false,
-        priority = 1000,
-    },
-    {
         "tomasr/molokai",
         lazy = false,
         priority = 1000,

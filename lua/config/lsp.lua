@@ -35,6 +35,12 @@ lspconfig.clangd.setup {
     capabilities = capabilities
 }
 
+lspconfig.vhdl_ls.setup({
+    capabilities = capabilities,
+    cmd = { "vhdl_ls" },
+    filetypes = { "vhdl", "vhd" },
+})
+
 lspconfig.pyright.setup {
     capabilities = capabilities
 }
