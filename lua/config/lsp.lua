@@ -1,7 +1,17 @@
 local lspconfig = require("lspconfig")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local on_attach = function(client, bufnr)
+  require("lsp_signature").on_attach({
+    bind = true,
+    floating_window = true,
+    hint_enable = false,
+    handler_opts = { border = "rounded" },
+  }, bufnr)
+end
+
 
 lspconfig.ts_ls.setup {
+    on_attach = on_attach,
     capabilities = capabilities,
     settings = {
         typescript = {
@@ -32,6 +42,7 @@ lspconfig.ts_ls.setup {
 }
 
 lspconfig.clangd.setup {
+    on_attach = on_attach,
     capabilities = capabilities
 }
 
@@ -42,10 +53,12 @@ lspconfig.vhdl_ls.setup({
 })
 
 lspconfig.pyright.setup {
+    on_attach = on_attach,
     capabilities = capabilities
 }
 
 lspconfig.rust_analyzer.setup {
+    on_attach = on_attach,
     capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
@@ -55,37 +68,6 @@ lspconfig.rust_analyzer.setup {
         }
     }
 }
-
-lspconfig.verible.setup {
-    capabilities = capabilities,
-}
-
-vim.api.nvim_create_autocmd(
-    { "BufNewFile", "BufRead" }, {
-        pattern = { "*.v" },
-        command = "set filetype=verilog",
-    }
-)
-
--- Setting the filetype for SystemVerilog
-vim.api.nvim_create_autocmd(
-    { "BufNewFile", "BufRead" }, {
-        pattern = { "*.sv" },
-        command = "set filetype=systemverilog",
-    }
-)
-
--- Create an event handler for the FileType autocommand
-vim.api.nvim_create_autocmd('FileType', {
-    -- This handler will fire when the buffer's 'filetype' is "python"
-    pattern = { 'verilog', 'systemverilog' },
-    callback = function()
-        vim.lsp.start({
-            name = 'verible',
-            cmd = { 'verible-verilog-ls' },
-        })
-    end,
-})
 
 lspconfig.lua_ls.setup {
     capabilities = capabilities,

@@ -46,6 +46,9 @@ vim.keymap.set('n', '<leader>cf', ':colorscheme fluoromachine<CR>', { noremap = 
 vim.keymap.set('n', '<leader>cm', ':colorscheme molokai<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cl', ':colorscheme moonlight<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cn', ':colorscheme nord<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cy', ':colorscheme cyberdream<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ci', ':colorscheme nightfox<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cx', ':colorscheme oxocarbon<CR>', { noremap = true, silent = true })
 
 -- Telescope
 local builtin = require('telescope.builtin')
@@ -55,7 +58,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
 -- Undotree
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>ut', vim.cmd.UndotreeToggle)
 
 -- LSP & Lspsaga
 local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -124,6 +127,8 @@ vim.keymap.set('n', '<F10>', function() require('dap').step_over() end, { desc =
 vim.keymap.set('n', '<F11>', function() require('dap').step_into() end, { desc = "Step Into" })
 vim.keymap.set('n', '<F12>', function() require('dap').step_out() end, { desc = "Step Out" })
 vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end, { desc = "Toggle Breakpoint" })
+vim.keymap.set("n", "<Leader>ui", require("dapui").toggle)
+
 
 -- Use Alt + hjkl to navigate between panes
 vim.keymap.set('n', '<A-h>', '<C-w>h', { desc = "Move to left pane" })
