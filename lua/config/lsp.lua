@@ -1,12 +1,12 @@
 local lspconfig = require("lspconfig")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local on_attach = function(client, bufnr)
-  require("lsp_signature").on_attach({
-    bind = true,
-    floating_window = true,
-    hint_enable = false,
-    handler_opts = { border = "rounded" },
-  }, bufnr)
+    require("lsp_signature").on_attach({
+        bind = true,
+        floating_window = true,
+        hint_enable = false,
+        handler_opts = { border = "rounded" },
+    }, bufnr)
 end
 
 
@@ -58,13 +58,14 @@ lspconfig.pyright.setup {
 }
 
 lspconfig.rust_analyzer.setup {
-    on_attach = on_attach,
+    -- on_attach = on_attach,
     capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
+            cargo = { allFeatures = true },
             checkOnSave = {
-                command = "clippy"
-            }
+                command = "clippy",
+            },
         }
     }
 }
