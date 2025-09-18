@@ -6,66 +6,14 @@ return {
         priority = 1000,
     },
     {
-        "maxmx03/fluoromachine.nvim",
-        lazy = false,
-        priority = 1000,
-
-    },
-    {
-        "navarasu/onedark.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require('onedark').setup {
-                style = 'deep'
-            }
-        end
-    },
-    {
         "olivercederborg/poimandres.nvim",
         lazy = false,
         priority = 1000,
     },
     {
-        "rose-pine/neovim",
-        name = 'rose-pine',
+        "dracula/vim",
+        name = "dracula",
         lazy = false,
         priority = 1000,
     },
-    {
-        "tomasr/molokai",
-        lazy = false,
-        priority = 1000,
-    },
-    {
-        "nordtheme/vim",
-        name = "nord",
-        lazy = false,
-        priority = 1000,
-    },
-    {
-        "Mofiqul/dracula.nvim",
-        lazy = false,
-        priority = 1000,
-    },
-    {
-        "shaunsingh/moonlight.nvim",
-        lazy = false,
-        priority = 1000,
-    },
-    {
-        "scottmckendry/cyberdream.nvim",
-        lazy = false,
-        priority = 1000
-    },
-    {
-        "edeneast/nightfox.nvim",
-        lazy = false,
-        priority = 1000
-    },
-    {
-        "nyoom-engineering/oxocarbon.nvim",
-        lazy = false,
-        priority = 1000
-    }
 }

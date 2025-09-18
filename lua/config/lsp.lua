@@ -1,4 +1,3 @@
-local lspconfig = require("lspconfig")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local on_attach = function(client, bufnr)
     require("lsp_signature").on_attach({
@@ -10,7 +9,7 @@ local on_attach = function(client, bufnr)
 end
 
 
-lspconfig.ts_ls.setup {
+vim.lsp.config('ts_ls', {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -39,25 +38,19 @@ lspconfig.ts_ls.setup {
             },
         },
     }
-}
-
-lspconfig.clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
-lspconfig.vhdl_ls.setup({
-    capabilities = capabilities,
-    cmd = { "vhdl_ls" },
-    filetypes = { "vhdl", "vhd" },
 })
 
-lspconfig.pyright.setup {
+vim.lsp.config('clangd', {
     on_attach = on_attach,
     capabilities = capabilities
-}
+})
 
-lspconfig.rust_analyzer.setup {
+vim.lsp.config('pyright', {
+    on_attach = on_attach,
+    capabilities = capabilities
+})
+
+vim.lsp.config('rust-analyzer', {
     -- on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -68,9 +61,9 @@ lspconfig.rust_analyzer.setup {
             },
         }
     }
-}
+})
 
-lspconfig.lua_ls.setup {
+vim.lsp.config('lua_ls', {
     capabilities = capabilities,
     on_init = function(client)
         if client.workspace_folders then
@@ -107,4 +100,79 @@ lspconfig.lua_ls.setup {
             }
         }
     }
-}
+})
+
+-- clangd
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+    pattern = { "*.c", "*.cpp", "*.h", "*.hpp" },
+    callback = function(args)
+        vim.lsp.start({
+            name = "clangd",
+            cmd = { "clangd" },
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            on_attach = on_attach,
+        })
+    end,
+})
+
+-- pyright
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+    pattern = { "*.py" },
+    callback = function(args)
+        vim.lsp.start({
+            name = "pyright",
+            cmd = { "pyright-langserver" },
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            on_attach = on_attach,
+        })
+    end,
+})
+
+-- TypeScript / JavaScript
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+    pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+    callback = function(args)
+        vim.lsp.start({
+            name = "tsserver",
+            cmd = { "typescript-language-server", "--stdio" },
+            capabilities = capabilities,
+        })
+    end,
+})
+
+-- Rust
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+    pattern = { "*.rs" },
+    callback = function(args)
+        vim.lsp.start({
+            name = "rust-analyzer",
+            cmd = { "rust-analyzer" },
+            capabilities = capabilities,
+            settings = {
+                ["rust-analyzer"] = {
+                    cargo = { allFeatures = true },
+                    checkOnSave = { command = "clippy" },
+                },
+            },
+        })
+    end,
+})
+
+-- Lua
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+    pattern = { "*.lua" },
+    callback = function(args)
+        vim.lsp.start({
+            name = "lua_ls",
+            cmd = { "lua-language-server" },
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            settings = {
+                Lua = {
+                    runtime = { version = "LuaJIT" },
+                    workspace = { checkThirdParty = false },
+                    hint = { enable = true },
+                },
+            },
+        })
+    end,
+})
