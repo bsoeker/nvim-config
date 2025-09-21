@@ -7,7 +7,8 @@ return {
             floating_window = true,
             handler_opts = {
                 border = "rounded"
-            }
+            },
+            hint_prefix = "",
         })
     end
 }
