@@ -14,8 +14,8 @@ vim.lsp.config["clangd"] = {
     cmd = { "clangd", "--completion-style=detailed", "--header-insertion=never" },
     filetypes = { "c", "cpp", "objc", "objcpp" },
     root_markers = { "compile_commands.json", ".git" },
-    capabilities = capabilities,
     on_attach = on_attach,
+    capabilities = capabilities,
 }
 vim.lsp.enable("clangd")
 
@@ -24,32 +24,35 @@ vim.lsp.config["pyright"] = {
     cmd = { "pyright-langserver", "--stdio" },
     filetypes = { "python" },
     root_markers = { ".git" },
-    capabilities = capabilities,
     on_attach = on_attach,
+    capabilities = capabilities,
 }
 vim.lsp.enable("pyright")
 
--- tsserver (TypeScript / JavaScript)
-vim.lsp.config["tsserver"] = {
+-- ts_ls (TypeScript / JavaScript, faster than ts_ls)
+vim.lsp.config["ts_ls"] = {
     cmd = { "typescript-language-server", "--stdio" },
     filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-    root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
     capabilities = capabilities,
     on_attach = on_attach,
     settings = {
-        typescript = { inlayHints = { includeInlayParameterNameHints = "all" } },
-        javascript = { inlayHints = { includeInlayParameterNameHints = "all" } },
+        typescript = {
+            inlayHints = { parameterNames = { enabled = "none" } }, -- lighter than "all"
+        },
+        javascript = {
+            inlayHints = { parameterNames = { enabled = "none" } },
+        },
     },
 }
-vim.lsp.enable("tsserver")
+vim.lsp.enable("ts_ls")
 
 -- rust-analyzer
 vim.lsp.config["rust-analyzer"] = {
     cmd = { "rust-analyzer" },
     filetypes = { "rust" },
     root_markers = { "Cargo.toml", ".git" },
-    capabilities = capabilities,
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
             cargo = { allFeatures = true },
@@ -64,8 +67,8 @@ vim.lsp.config["lua_ls"] = {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
     root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
-    capabilities = capabilities,
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = { version = "LuaJIT" },
