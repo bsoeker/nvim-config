@@ -11,7 +11,7 @@ end
 
 -- clangd (C / C++)
 vim.lsp.config["clangd"] = {
-    cmd = { "clangd", "--completion-style=detailed", "--header-insertion=never" },
+    cmd = { "clangd", "--completion-style=detailed" },
     filetypes = { "c", "cpp", "objc", "objcpp" },
     root_markers = { "compile_commands.json", ".git" },
     on_attach = on_attach,
