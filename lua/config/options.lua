@@ -1,11 +1,11 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("tokyonight")
+vim.cmd.colorscheme("tokyonight-night")
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
 vim.opt.scrolloff = 8
@@ -19,16 +19,16 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.g.clipboard = {
-    name = "xclip",
-    copy = {
-        ["+"] = "xclip -selection clipboard",
-        ["*"] = "xclip -selection clipboard",
-    },
-    paste = {
-        ["+"] = "xclip -selection clipboard -o",
-        ["*"] = "xclip -selection clipboard -o",
-    },
-    cache_enabled = 0,
+  name = "xclip",
+  copy = {
+    ["+"] = "xclip -selection clipboard",
+    ["*"] = "xclip -selection clipboard",
+  },
+  paste = {
+    ["+"] = "xclip -selection clipboard -o",
+    ["*"] = "xclip -selection clipboard -o",
+  },
+  cache_enabled = 0,
 }
 
 -- Format on Save
@@ -45,10 +45,10 @@ vim.lsp.inlay_hint.enable(true)
 vim.opt.updatetime = 200
 
 vim.diagnostic.config({
-    virtual_text = true,
-    signs = true,
-    underline = true,
-    update_in_insert = true,
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
 })
 
 -- squiggly underlines for diagnostics
