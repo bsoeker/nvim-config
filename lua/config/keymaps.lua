@@ -38,9 +38,15 @@ vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
 
 -- Colorschemes
 vim.keymap.set('n', '<leader>cd', ':colorscheme dracula<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ce', ':colorscheme elflord<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ci', ':colorscheme industry<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cn', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', ':colorscheme poimandres<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cr', ':colorscheme retrobox<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cu', ':colorscheme unokai<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cv', ':colorscheme vim<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cz', ':colorscheme zaibatsu<CR>', { noremap = true, silent = true })
 
 -- Telescope
 local builtin = require('telescope.builtin')
@@ -61,48 +67,48 @@ vim.keymap.set("n", "<leader>rn", ':Lspsaga rename<CR>', opts)
 vim.keymap.set("n", "<leader>ca", ':Lspsaga code_action<CR>', opts)
 vim.keymap.set("n", "<leader>t", ':Lspsaga term_toggle<CR>', opts)
 vim.keymap.set('n', '<leader>fr', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
-    { noremap = true, silent = true })
+  { noremap = true, silent = true })
 
 -- Rename selection document-wide
 vim.keymap.set("v", "<leader>rn", function()
-    -- Yank the visually selected text into the unnamed register
-    vim.cmd('normal! "vy')
+  -- Yank the visually selected text into the unnamed register
+  vim.cmd('normal! "vy')
 
-    -- Get the yanked text (exact visual selection)
-    local selected_text = vim.fn.getreg('"')
+  -- Get the yanked text (exact visual selection)
+  local selected_text = vim.fn.getreg('"')
 
-    -- Print the selected text for debugging
-    print("Selected text: " .. selected_text)
+  -- Print the selected text for debugging
+  print("Selected text: " .. selected_text)
 
-    -- Prompt the user for the replacement text
-    local new_text = vim.fn.input("Rename '" .. selected_text .. "' to: ")
+  -- Prompt the user for the replacement text
+  local new_text = vim.fn.input("Rename '" .. selected_text .. "' to: ")
 
-    -- Perform the substitution only if a valid replacement is provided
-    if new_text and #new_text > 0 then
-        -- Escape special characters in the selected text for literal matching
-        local escaped_selected = vim.fn.escape(selected_text, "\\/.*$^[]~")
+  -- Perform the substitution only if a valid replacement is provided
+  if new_text and #new_text > 0 then
+    -- Escape special characters in the selected text for literal matching
+    local escaped_selected = vim.fn.escape(selected_text, "\\/.*$^[]~")
 
-        -- Print debugging information
-        print("Escaped selected text: " .. escaped_selected)
-        print("Replacement text: " .. new_text)
+    -- Print debugging information
+    print("Escaped selected text: " .. escaped_selected)
+    print("Replacement text: " .. new_text)
 
-        -- Perform the substitution
-        local success, err = pcall(function()
-            -- Use `\V` for literal match and global substitution
-            vim.cmd(":%s/\\V" .. escaped_selected .. "/" .. new_text .. "/g")
-        end)
+    -- Perform the substitution
+    local success, err = pcall(function()
+      -- Use `\V` for literal match and global substitution
+      vim.cmd(":%s/\\V" .. escaped_selected .. "/" .. new_text .. "/g")
+    end)
 
-        -- Handle errors or report success
-        if not success then
-            print("Error during substitution: " .. err)
-        else
-            vim.cmd("nohlsearch") -- Clear search highlights after substitution
-            vim.cmd("write")      -- Save the file to persist changes
-            print("Substitution successful!")
-        end
+    -- Handle errors or report success
+    if not success then
+      print("Error during substitution: " .. err)
     else
-        print("Rename canceled or empty replacement provided.")
+      vim.cmd("nohlsearch") -- Clear search highlights after substitution
+      vim.cmd("write")      -- Save the file to persist changes
+      print("Substitution successful!")
     end
+  else
+    print("Rename canceled or empty replacement provided.")
+  end
 end, { noremap = true, silent = true })
 
 -- Remove persisting search highlights
@@ -110,7 +116,7 @@ vim.keymap.set("n", "<leader><Esc>", ":nohlsearch<CR>", { noremap = true, silent
 
 -- Inlay hint toggle
 vim.keymap.set('n', '<leader>ih', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>',
-    { noremap = true, silent = true })
+  { noremap = true, silent = true })
 
 -- Debugging
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end, { desc = "Start/Continue Debugging" })
