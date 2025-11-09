@@ -12,7 +12,7 @@ end
 -- clangd (C / C++)
 vim.lsp.config["clangd"] = {
   cmd = { "clangd" },
-  filetypes = { "c", "cpp", "objc", "objcpp" },
+  filetypes = { "c", "cpp", "cuda" },
   root_markers = { "compile_commands.json", ".git" },
   on_attach = on_attach,
   capabilities = capabilities,
@@ -53,6 +53,19 @@ vim.lsp.config["gopls"] = {
   capabilities = capabilities
 }
 vim.lsp.enable("gopls")
+
+-- ruby-lsp
+vim.lsp.config["ruby-lsp"] = {
+  cmd = { "ruby-lsp" },
+  filetypes = { "ruby" },
+  init_options = {
+    formatter = "auto"
+  },
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+vim.lsp.enable("ruby-lsp")
+
 
 -- rust-analyzer
 vim.lsp.config["rust-analyzer"] = {

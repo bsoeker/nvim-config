@@ -37,7 +37,8 @@ vim.keymap.set('n', '<leader>q', ":q<CR>")
 vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
 
 -- Colorschemes
-vim.keymap.set('n', '<leader>cd', ':colorscheme dracula<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cl', ':colorscheme dracula<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cg', ':colorscheme github_dark_dimmed<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ce', ':colorscheme elflord<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ci', ':colorscheme industry<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cn', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
@@ -64,6 +65,7 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 vim.keymap.set("n", "<leader>rn", ':Lspsaga rename<CR>', opts)
+vim.keymap.set("n", "<leader>cd", ':Lspsaga show_cursor_diagnostics<CR>', opts)
 vim.keymap.set("n", "<leader>ca", ':Lspsaga code_action<CR>', opts)
 vim.keymap.set("n", "<leader>t", ':Lspsaga term_toggle<CR>', opts)
 vim.keymap.set('n', '<leader>fr', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>',
