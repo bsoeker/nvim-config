@@ -37,17 +37,8 @@ vim.keymap.set('n', '<leader>q', ":q<CR>")
 vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
 
 -- Colorschemes
-vim.keymap.set('n', '<leader>cl', ':colorscheme dracula<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cg', ':colorscheme github_dark_dimmed<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ce', ':colorscheme elflord<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ci', ':colorscheme industry<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cn', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>cp', ':colorscheme poimandres<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cr', ':colorscheme retrobox<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cu', ':colorscheme unokai<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cv', ':colorscheme vim<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>cz', ':colorscheme zaibatsu<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight-storm<CR>', { noremap = true, silent = true })
 
 -- Telescope
 local builtin = require('telescope.builtin')
