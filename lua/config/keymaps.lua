@@ -37,8 +37,13 @@ vim.keymap.set('n', '<leader>q', ":q<CR>")
 vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
 
 -- Colorschemes
-vim.keymap.set('n', '<leader>cp', ':colorscheme poimandres<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ct', ':colorscheme tokyonight-storm<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cts', ':colorscheme tokyonight-storm<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ctt', ':colorscheme tokyonight<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ctn', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cm', ':colorscheme molokai<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ck', ':colorscheme kanagawa<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cr', ':colorscheme rose-pine<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cv', ':colorscheme vscode<CR>', { noremap = true, silent = true })
 
 -- Telescope
 local builtin = require('telescope.builtin')
